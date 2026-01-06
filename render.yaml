@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ai-vulnerability-scanner
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: AI_ENABLED
+        value: true
+      - key: AI_FALLBACK_ENABLED
+        value: true
+      - key: DEBUG
+        value: false
+
